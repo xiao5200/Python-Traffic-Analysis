@@ -96,6 +96,51 @@ python app.py
 
 打开浏览器访问`http://127.0.0.1:5000`查看图表和数据分析结果。
 
+##web页面代码自行添加
+index.html
+```
+{% extends "layout.html" %}
+
+{% block content %}
+<h2>网络流量协议类型分布</h2>
+<div class="chart">
+    <img src="{{ url_for('static', filename='images/protocol_distribution.png') }}" alt="协议类型分布图">
+</div>
+<div class="data">
+    <h3>流量统计信息</h3>
+    <p>此处可以显示更多统计数据，如访问量前五的IP地址等。</p>
+</div>
+{% endblock %}
+```
+layout.html
+```
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>网络流量监控与分析系统</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <header>
+        <h1>网络流量监控与分析系统</h1>
+    </header>
+    
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+    
+    <footer>
+        <p>&copy; 2024 网络流量监控系统</p>
+    </footer>
+    
+    <script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
+</body>
+</html>
+
+```
+
 ## 主要模块说明
 
 ### 1.`capture.py`

@@ -3,7 +3,7 @@ import pyshark
 import pandas as pd
 
 # 设置 tshark 的路径
-tshark_path = r'D:\software\Wireshark\tshark.exe'
+tshark_path = r''
 
 def analyze_pcap(file_path="data/captured_traffic.pcap"):
     print("正在分析PCAP文件中的流量数据...")
